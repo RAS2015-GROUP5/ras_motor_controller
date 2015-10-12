@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 2.8.3)
+project(ras_motor_controller)
+find_package(catkin REQUIRED roscpp std_msgs message_generation roslaunch)
+roslaunch_add_file_check(launch)
+catkin_package(CATKIN_DEPENDS message_runtime)
+add_executable(motor_controller src/motor_controller.cpp)
+target_link_libraries(motor_controller ${catkin_LIBRARIES})
+add_dependencies(motor_controller ras_controller_gencpp)
